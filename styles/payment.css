@@ -1,0 +1,65 @@
+
+
+.ordering-form {
+    font-size: 18px;
+}
+
+.ordering-form__tab {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 60px;
+    margin-right: -30px;
+}
+
+.ordering-form__tab > * {
+    margin-right: 30px;
+}
+
+.ordering-form__input {
+    color: var(--InputColor);
+    font-size: 18px;
+    font-weight: bold;
+
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid var(--Iron);
+}
+
+.ordering-form__input:focus, .ordering-form__select:focus {
+    outline: none;
+}
+
+.ordering-form__select {
+    background-color: var(--White);
+    color: var(--InputColor);
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid var(--Iron);
+}
+
+.ordering-form__fieldset {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    border: none;
+}
+
+.ordering-form__fieldset > *{
+    margin: 10px 0;
+}
+
+.ordering-form__group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+
+.input-with-label {
+    display: flex;
+    flex-direction: column;
+}

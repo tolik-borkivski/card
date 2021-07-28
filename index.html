@@ -7,25 +7,177 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./styles/tabs.css">
-    <script src="./scripts/tabs.js"></script>
+    <link rel="stylesheet" href="./styles/dropdown.css">
+    <link rel="stylesheet" href="./styles/card.css">
+    <link rel="stylesheet" href="./styles/payment.css">
+    <script src="./scripts/tabs.js" type="text/javascript"></script>
+    <script src="./scripts/autocomplete/autocomplete-constants.js" type="text/javascript"></script>
+    <script src="./scripts/autocomplete/autocomplete-list.js" type="text/javascript"></script>
+    <script src="./scripts/autocomplete/autocomplete.js" type="text/javascript"></script>
+    <script src="./scripts/card/card.js" type="text/javascript"></script>
+    <script src="./scripts/payment/payment-form.js" type="text/javascript"></script>
     <script src="./scripts/index.js" type="text/javascript"></script>
+    <script src="./scripts/utils/mask-input.js"></script>
+    <script src="./scripts/utils/mask-formaters.js"></script>
+    <script src="./scripts/utils/get-credit-card-type.js"></script>
 </head>
 
 <body>
     <div class="ordering">
         <nav class="tab">
-            <div class="tab__item" data-tab-role="tab" data-tab-group="card" data-tab-content-id="YOUR_ORDER">YOUR ORDER</div>
-            <div class="tab__item" data-tab-role="tab" data-tab-group="card" data-tab-content-id="SHIPPING_DETAILS">SHIPPING DETAILS</div>
-            <div class="tab__item" data-tab-role="tab" data-tab-group="card" data-tab-content-id="PAYMENT_DETAILS">PAYMENT DETAILS</div>
-            <div class="tab__item" data-tab-role="tab" data-tab-group="card" data-tab-content-id="CONFIRMATION">CONFIRMATION</div>
+            <div
+                class="tab__item"
+                data-tab-role="tab"
+                data-tab-group="card"
+                data-tab-content-id="YOUR_ORDER"
+            >
+                YOUR ORDER
+            </div>
+            <div
+                class="tab__item"
+                data-tab-role="tab"
+                data-tab-group="card"
+                data-tab-content-id="SHIPPING_DETAILS"
+            >
+                SHIPPING DETAILS
+            </div>
+            <div
+                class="tab__item"
+                data-tab-role="tab"
+                data-tab-group="card"
+                data-tab-content-id="PAYMENT_DETAILS"
+            >
+                PAYMENT DETAILS
+            </div>
+            <div
+                class="tab__item"
+                data-tab-role="tab"
+                data-tab-group="card"
+                data-tab-content-id="CONFIRMATION"
+            >
+                CONFIRMATION
+            </div>
         </nav>
         <main>
-            <div class="card"></div>
-            <form class="ordering__form">
-                <div class="tab-content" data-tab-role="content" data-tab-group="card" data-tab-content-id="YOUR_ORDER">YOUR ORDER</div>
-                <div class="tab-content" data-tab-role="content" data-tab-group="card" data-tab-content-id="SHIPPING_DETAILS">SHIPPING DETAILS</div>
-                <div class="tab-content" data-tab-role="content" data-tab-group="card" data-tab-content-id="PAYMENT_DETAILS">PAYMENT DETAILS</div>
-                <div class="tab-content" data-tab-role="content" data-tab-group="card" data-tab-content-id="CONFIRMATION">CONFIRMATION</div>
+            <form class="ordering-form">
+                <div
+                    class="tab-content"
+                    data-tab-content-id="YOUR_ORDER"
+                    data-tab-group="card"
+                    data-tab-role="content"
+                >
+                    <div class="ordering-form__tab">
+                        <fieldset class="ordering-form__fieldset">
+                            <legend>YOUR ORDER</legend>
+                            <div class="input-with-label">
+                                <label>Product:</label>
+                                <input class="ordering-form__input" type="text">
+                            </div>
+                            <div class="input-with-label">
+                                <label>Quantity:</label>
+                                <input class="ordering-form__input" type="number">
+                            </div>
+                            <div class="input-with-label">
+                                <label>Price:</label>
+                                <input class="ordering-form__input" type="number">
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                <div
+                    class="tab-content"
+                    data-tab-content-id="SHIPPING_DETAILS"
+                    data-tab-group="card"
+                    data-tab-role="content"
+                >
+                   <div class="ordering-form__tab">
+                        <fieldset class="ordering-form__fieldset">
+                            <legend>SHIPPING DETAILS</legend>
+                            <div class="input-with-label">
+                                <label>Country:</label>
+                                <select class="ordering-form__select" name="country" data-autocomplete-group="country" data-autocomplete-role="value">
+                                    <option value="UA">Ukraine</option>
+                                    <option value="PL">Poland</option>
+                                </select>
+                            </div>
+                            <div class="input-with-label">
+                                <label>State:</label>
+                                <select class="ordering-form__select" name="state">
+                                    <option value="Kiev">Kiev</option>
+                                </select>
+                            </div>
+                            <div class="input-with-label">
+                                <label>City:</label>
+                                <input
+                                    class="ordering-form__input"
+                                    type="text" name="city"
+                                    data-autocomplete-group="country"
+                                    data-autocomplete-role="target"
+                                    autocomplete="off"
+                                >
+                                <div class="dropdown">
+                                    <ul
+                                        class="dropdown__list"
+                                        data-autocomplete-group="country"
+                                        data-autocomplete-role="list"
+                                        data-autocomplete-item-class="dropdown__item" ,
+                                        data-autocomplete-item-active-class="dropdown__item--active"
+                                    >
+                                </div>
+                            </div>
+                        </fieldset>
+                   </div>
+                </div>
+                <div
+                    class="tab-content"
+                    data-tab-content-id="PAYMENT_DETAILS"
+                    data-tab-group="card"
+                    data-tab-role="content"
+                >
+                    <div class="ordering-form__tab">
+                        <div class="credit-card">
+                            <div class="credit-card__logo" data-card-group="PAYMENT_CARD" data-card-role="type">Visa</div>
+                            <div class="credit-card__watermark">Wattermark</div>
+                            <div class="credit-card__number" data-card-group="PAYMENT_CARD" data-card-role="number">
+                                <span>0000</span> <span>0000</span> <span>0000</span> <span>0000</span>
+                            </div>
+                            <div class="credit-card__owner" data-card-group="PAYMENT_CARD" data-card-role="owner">Anatolii Borkivski</div>
+                            <div class="credit-card__expiration-date">
+                                <span data-card-group="PAYMENT_CARD" data-card-role="date">12/12</span>
+                            </div>
+                            <div class="credit-card__csv" data-card-group="PAYMENT_CARD" data-card-role="csv">sdf</div>
+                        </div>
+                        <fieldset class="ordering-form__fieldset">
+                            <legend>PAYMENT DETAILS</legend>
+                                <div class="input-with-label">
+                                    <label for="">Card owner</label>
+                                    <input type="text" name="card-owner" placeholder="Owner" class="ordering-form__input">
+                                </div>
+                                <div class="input-with-label">
+                                    <label for="">Card number</label>
+                                    <input type="number" name="card-number" placeholder="Card number" class="ordering-form__input">
+                                </div>
+                                <div class="ordering-form__group">
+                                    <div class="input-with-label">
+                                        <label class="input-with-label__label">Valid through</label>
+                                        <input type="text" name="card-date" placeholder="MM/YY" maxlength="5" class="ordering-form__input">
+                                    </div>
+                                    <div class="input-with-label">
+                                        <label class="input-with-label__label">CSV</label>
+                                        <input class="input-with-label__input ordering-form__input" type="number" name="card-csv" placeholder="CSV" class="ordering-form__input">
+                                    </div>
+                                </div>
+                        </fieldset>
+                    </div>
+                </div>
+                <div
+                    class="tab-content"
+                    data-tab-content-id="CONFIRMATION"
+                    data-tab-group="card"
+                    data-tab-role="content"
+                >
+                    <div class="ordering-form__tab">CONFIRMATION</div>
+                </div>
             </form>
         </main>
     </div>

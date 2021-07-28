@@ -1,0 +1,50 @@
+.credit-card {
+    background-color: blue;
+    color: var(--White);
+    font-size: 24px;
+    font-weight: bold;
+    width: 500px;
+    height: 240px;
+    border-radius: 10px;
+    box-sizing: border-box;
+
+    display: grid;
+    grid-template-areas: 
+        ". . . logo"
+        "watermark . . ."
+        "number number number number"
+        "owner owner expiration-date csv";
+
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    padding: 20px;
+}
+
+.credit-card__logo {
+    grid-area: logo;
+}
+
+.credit-card__watermark {
+    grid-area: watermark;
+}
+
+.credit-card__number {
+    grid-area: number;
+}
+
+.credit-card__owner {
+    grid-area: owner;
+}
+
+.credit-card__expiration-date {
+    grid-area: expiration-date;
+}
+
+.credit-card__logo img {
+    width: 50px;
+    background-color: transparent;
+}
+
+.credit-card__csv {
+    grid-area: csv;
+}

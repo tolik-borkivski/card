@@ -1,32 +1,50 @@
+:root {
+    --AthensGray: #F4F5F7;
+    --BostonBlue: #3B8DB0;
+    --Iron: #cdced0;
+    --White: #fff;
+    --JungleMist: #C1D1D8;
+    --Nepal: #99b7c5;
+    --Bombay: #B7B8BA;
+    --Abbey: #4E4E50;
+    --Boulder: #7C7C7C;
+
+    --InputColor: var(--Boulder);
+}
+
 .tab {
-    overflow: hidden;
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
+    display: flex;
+    justify-content: space-around;
+
+    background-color: var(--AthensGray);
 }
 
 .tab__item {
-    background-color: inherit;
-    float: left;
-    border: none;
-    outline: none;
+    flex-grow: 1;
+    text-align: center;
+    font-weight: bold;
+
+    background-color: var(--AthensGray);
+    color: var(--Nepal);
     cursor: pointer;
     padding: 14px 16px;
     transition: 0.3s;
+
+    border-bottom: 5px solid var(--Iron);
 }
 
 .tab__item:hover {
-    background-color: #ddd;
+    color: var(--BostonBlue);
+    border-bottom: 5px solid var(--BostonBlue);
 }
 
 .tab__item--active {
-    background-color: #ccc;
+    color: var(--BostonBlue);
+    border-bottom: 5px solid var(--BostonBlue);
 }
 
 .tab-content {
     display: none;
-    padding: 6px 12px;
-    border: 1px solid #ccc;
-    border-top: none;
 }
 
 .tab-content--active {

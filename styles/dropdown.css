@@ -1,0 +1,15 @@
+.dropdown {
+    position: relative;
+}
+
+.dropdown__list {
+    position: absolute
+}
+
+.dropdown__item {
+    
+}
+
+.dropdown__item--active {
+    color: red;
+}

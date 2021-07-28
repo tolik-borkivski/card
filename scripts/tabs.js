@@ -6,13 +6,19 @@ const TAB_DATASET = {
     CONTENT_ID: "tabContentId",
 }
 
+const TAB_DATA_ATTRIBUTE = {
+    ROLE: "data-tab-role",
+    GROUP: 'data-tab-group',
+    CONTENT_ID: 'data-tab-content-id',
+}
+
 const TAB_CLASSES = {
     TAB_ACTIVE_CLASS: "tab__item--active",
     CONTENT_ACTIVE_CLASS: "tab-content--active",
 }
 
-const makeTabsSelector = (groupName) => `[data-tab-group='${groupName}'][data-tab-role='tab']`;
-const makeTabsContentSelector = (groupName) => `[data-tab-group='${groupName}'][data-tab-role='content']`;
+const makeTabsSelector = (groupName) => `[${TAB_DATA_ATTRIBUTE.GROUP}='${groupName}'][${TAB_DATA_ATTRIBUTE.ROLE}='tab']`;
+const makeTabsContentSelector = (groupName) => `[${TAB_DATA_ATTRIBUTE.GROUP}='${groupName}'][${TAB_DATA_ATTRIBUTE.ROLE}='content']`;
 
 function getContentId(element) {
     return element.dataset[TAB_DATASET.CONTENT_ID];
@@ -88,6 +94,7 @@ function makeTabs({ group: tabGroupName }) {
     activateContent(activeContent);
 
     function clickHandler({ target }) {
+        if (target === activeTab) return;
         const contentId = getContentId(target);
         const nextTab = findByContentIdIn(contentId, tabs);
         activeTab = switchTabs(activeTab, nextTab);
